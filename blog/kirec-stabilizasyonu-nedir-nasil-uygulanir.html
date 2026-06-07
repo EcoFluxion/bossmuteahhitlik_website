@@ -39,7 +39,7 @@
 body{background:var(--pg);color:var(--tx);font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
 a{color:var(--acc);}
 /* ---- blog nav ---- */
-.bnav{background:#ffffff;backdrop-filter:saturate(140%) blur(6px);box-shadow:0 2px 18px rgba(0,0,0,.08);padding:.55rem 0;}
+.bnav{position:fixed!important;top:0;left:0;right:0;z-index:1031;background:#ffffff!important;backdrop-filter:saturate(140%) blur(6px);box-shadow:0 2px 18px rgba(0,0,0,.08)!important;padding:.55rem 0;}
 .bnav .navbar-brand{display:flex;align-items:center;gap:.55rem;font-family:'Poppins','Segoe UI',sans-serif;font-weight:700;color:#023E8A;font-size:1.05rem;}
 .bnav .navbar-brand img{height:40px;border-radius:6px;}
 .bnav .nav-link{color:#333333;font-weight:600;font-size:.95rem;padding:.4rem .8rem;border-radius:8px;transition:.2s;}
@@ -111,7 +111,27 @@ a{color:var(--acc);}
 .bfoot li{margin-bottom:.5rem;font-size:.92rem;}
 .bfoot .fcontact i{color:var(--acc);width:18px;}
 .bfoot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:2rem;padding-top:1.2rem;text-align:center;font-size:.85rem;color:rgba(255,255,255,.6);}
-@media(max-width:600px){.article-hero{padding:2rem 1.3rem;}}
+.hero-credit{font-size:.74rem;color:var(--txm);margin:-1.2rem 0 1.4rem;text-align:right;}
+.hero-credit a{color:var(--txm);}
+.article-backtop{display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1rem;padding:.42rem .95rem;border:1px solid var(--bd);border-radius:50px;color:var(--acc);font-weight:600;font-size:.85rem;text-decoration:none;transition:.2s;}
+.article-backtop:hover{background:var(--acc);color:#fff;border-color:var(--acc);}
+.article-hero{min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;}
+.post-pager{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2.8rem 0 1rem;}
+.post-pager a{display:flex;flex-direction:column;gap:.3rem;border:1px solid var(--bd);border-radius:12px;padding:1rem 1.2rem;text-decoration:none;background:var(--card);transition:.2s;min-width:0;}
+.post-pager a:hover{border-color:var(--acc);transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.08);}
+.post-pager .lbl{font-size:.78rem;color:var(--acc);font-weight:700;}
+.post-pager .ttl{font-family:'Poppins','Segoe UI',sans-serif;color:var(--hd);font-weight:700;font-size:.98rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.post-pager .next{text-align:right;align-items:flex-end;}
+.related{margin:3rem 0 1rem;}
+.related h3{font-family:'Poppins','Segoe UI',sans-serif;font-weight:700;font-size:1.3rem;color:var(--hd);margin-bottom:1rem;}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;}
+.related-card{border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--card);text-decoration:none;display:flex;flex-direction:column;transition:.2s;}
+.related-card:hover{border-color:var(--acc);transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.08);}
+.related-card .rc-top{height:100px;background-size:cover;background-position:center;background-color:var(--card2);}
+.related-card .rc-body{padding:.8rem .9rem;}
+.related-card .rc-cat{font-size:.67rem;text-transform:uppercase;letter-spacing:.8px;color:var(--acc);font-weight:700;}
+.related-card .rc-ttl{font-family:'Poppins','Segoe UI',sans-serif;color:var(--hd);font-weight:600;font-size:.9rem;line-height:1.3;margin-top:.25rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+@media(max-width:600px){.article-hero{padding:2rem 1.3rem;min-height:230px;}.post-pager{grid-template-columns:1fr;}}
 </style>
   <script type="application/ld+json">
 {
@@ -235,11 +255,13 @@ a{color:var(--acc);}
     </div>
   </nav>
   <main class="article-wrap">
+    <a href="/blog/" class="article-backtop"><i class="bi bi-arrow-left"></i> Tüm Yazılar</a>
     <nav class="breadcrumb-nav"><a href="/">BOSS Müteahhitlik</a> / <a href="/blog/">Blog</a> / Kireç Stabilizasyonu Nedir, Nasıl ve Neden Uygulanır?</nav>
-    <div class="article-hero">
+    <div class="article-hero" style="background:linear-gradient(165deg,rgba(0,0,0,.20),rgba(0,0,0,.66)),url('/blog/img/kirec-stabilizasyonu-nedir-nasil-uygulanir.jpg') center/cover;">
       <div class="cat">Zemin İyileştirme</div>
       <h1>Kireç Stabilizasyonu Nedir, Nasıl ve Neden Uygulanır?</h1>
     </div>
+    <p class="hero-credit">Görsel: Sammya Nig Ltd · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Soil_stabilization.jpg" target="_blank" rel="noopener nofollow">Wikimedia Commons</a></p>
     <p class="article-sub">Şişen, düşük taşıma güçlü killi zeminleri yerinde iyileştirerek sağlam bir yol temeline dönüştüren kireç stabilizasyonunun tekniğini, adımlarını ve ekonomisini açıklıyoruz.</p>
     <div class="article-meta">
       <span><i class="bi bi-clock"></i> 11 dk okuma</span>
@@ -266,6 +288,8 @@ a{color:var(--acc);}
     </article>
     <div class="takeaways"><h3>Öne çıkanlar</h3><ul><li>Kireç stabilizasyonu, şişen ve düşük taşıma güçlü killi zeminleri yerinde, kimyasal olarak sağlam bir yol temeline dönüştürür.</li><li>En uygun zeminler yüksek plastisiteli killerdir; CBR genelde %2-4&#39;ten çok daha yüksek seviyelere çıkarılabilir.</li><li>Sönmemiş kireç çok ıslak zeminleri kurutmak için, sönmüş kireç ise denge nemine yakın zeminler için daha uygundur.</li><li>Tek geçişte işlenen pratik tabaka kalınlığı 30-35 cm&#39;dir; kalın iyileştirmeler bu kademeler halinde inşa edilir.</li><li>Kazı-taşıma-ithal dolgu yöntemine kıyasla belirgin maliyet, zaman ve çevresel tasarruf sağlar.</li><li>Başarı; laboratuvar destekli dozaj, homojen derin karışım ve disiplinli kürlenme ile kalite kontrole bağlıdır.</li></ul></div>
     <div class="faq-wrap"><h3>Sıkça Sorulan Sorular</h3><details class="faq-item"><summary>Kireç stabilizasyonu her zeminde uygulanabilir mi?</summary><div class="faq-a">Hayır. Yöntem en iyi sonucu ince taneli, plastik killi zeminlerde verir. Temiz kumlu veya çakıllı zeminlerde kil minerali bulunmadığından kireç beklenen kimyasal etkiyi yaratmaz; bu zeminlerde çimento daha uygundur. Ayrıca sülfat içeriği yüksek zeminlerde kireç zararlı şişmeye yol açabileceğinden, uygulama öncesi mutlaka laboratuvar analizi yapılmalıdır.</div></details><details class="faq-item"><summary>Kireç stabilizasyonu CBR değerini ne kadar artırır?</summary><div class="faq-a">Artış miktarı zemin tipine, kireç dozajına ve kürlenme süresine bağlıdır. İşlenmemiş şişen kil zeminlerde %2-4 seviyesinde olan CBR, doğru dozaj ve yeterli kürlenmeyle kat kat artarak projenin gerektirdiği seviyelere ulaşabilir. Kesin değerler ancak proje zemininden alınan numunelerle yapılan CBR deneyleriyle belirlenir.</div></details><details class="faq-item"><summary>Sönmüş kireç mi yoksa sönmemiş kireç mi kullanmalıyım?</summary><div class="faq-a">Seçimi belirleyen ana etken zeminin nem durumudur. Su muhtevası yüksek, çamur kıvamındaki zeminlerde sönmemiş kireç (CaO) tercih edilir; çünkü suyu bağlayıp ısı açığa çıkararak zemini hızla kurutur. Nem zaten kabul edilebilir seviyedeyse sönmüş kireç (Ca(OH)2) daha güvenli ve yönetimi kolaydır. Bazı projelerde iki ürün işin farklı aşamalarında birlikte kullanılır.</div></details><details class="faq-item"><summary>Kireç stabilizasyonu klasik kazı-dolguya göre gerçekten daha ekonomik mi?</summary><div class="faq-a">Çoğu durumda evet. Elverişsiz zemini kazıp uzaklaştırmak ve yerine ocaktan kaliteli dolgu getirmek; kazı, nakliye, depolama ve malzeme alımı gibi ağır kalemler doğurur. Yerinde iyileştirmede zemin olduğu yerde değerlendirildiği için bu kalemler büyük ölçüde ortadan kalkar. Tasarruf oranı ocak mesafesine, zemin tipine ve kireç fiyatına göre değişir; ocağın uzak olduğu projelerde avantaj daha da belirginleşir.</div></details></div>
+    <section class="related"><h3>İlgili Yazılar</h3><div class="related-grid"><a class="related-card" href="/blog/altyapi-projeleri-icme-suyu-kanalizasyon-drenaj.html"><div class="rc-top" style="background-image:linear-gradient(165deg,rgba(0,0,0,.12),rgba(0,0,0,.5)),url('/blog/img/altyapi-projeleri-icme-suyu-kanalizasyon-drenaj.jpg');"></div><div class="rc-body"><div class="rc-cat">Altyapı Projeleri</div><div class="rc-ttl">Altyapı Projeleri: İçme Suyu, Kanalizasyon ve Drenaj Sistemleri</div></div></a><a class="related-card" href="/blog/asfalt-kaplama-turleri-uygulama-teknikleri.html"><div class="rc-top" style="background-image:linear-gradient(165deg,rgba(0,0,0,.12),rgba(0,0,0,.5)),url('/blog/img/asfalt-kaplama-turleri-uygulama-teknikleri.jpg');"></div><div class="rc-body"><div class="rc-cat">Asfalt ve Kaplama</div><div class="rc-ttl">Asfalt Kaplama Türleri ve Uygulama Teknikleri</div></div></a><a class="related-card" href="/blog/hastane-insaati-dikkat-edilmesi-gereken-noktalar.html"><div class="rc-top" style="background-image:linear-gradient(165deg,rgba(0,0,0,.12),rgba(0,0,0,.5)),url('/blog/img/hastane-insaati-dikkat-edilmesi-gereken-noktalar.jpg');"></div><div class="rc-body"><div class="rc-cat">Hastane İnşaatı</div><div class="rc-ttl">Hastane İnşaatında Dikkat Edilmesi Gereken 10 Kritik Nokta</div></div></a></div></section>
+    <nav class="post-pager" aria-label="Yazı gezinmesi"><a class="prev" href="/blog/karayolu-otoyol-yapimi-asamalari.html"><span class="lbl">← Önceki Yazı</span><span class="ttl">Karayolu ve Otoyol Yapımının Aşamaları: Etütten Asfalta Tüm Süreç</span></a><a class="next" href="/blog/uluslararasi-insaat-projeleri-afrika-deneyimi.html"><span class="lbl">Sonraki Yazı →</span><span class="ttl">Uluslararası İnşaat Projeleri ve Afrika&#39;da Müteahhitlik Deneyimi</span></a></nav>
     <div class="cta-box"><h3>BOSS Müteahhitlik</h3><p>Havalimanı, hastane, yol ve altyapı inşaatı üzerine uzman müteahhitlik rehberleri ve sektörel bilgiler.</p><a class="btn" href="/#contact">İletişime Geçin</a></div>
     <a href="/blog/" class="article-back"><i class="bi bi-arrow-left"></i> Tüm yazılar</a>
   </main>

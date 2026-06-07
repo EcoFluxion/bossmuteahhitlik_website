@@ -33,7 +33,7 @@
 body{background:var(--pg);color:var(--tx);font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
 a{color:var(--acc);}
 /* ---- blog nav ---- */
-.bnav{background:#ffffff;backdrop-filter:saturate(140%) blur(6px);box-shadow:0 2px 18px rgba(0,0,0,.08);padding:.55rem 0;}
+.bnav{position:fixed!important;top:0;left:0;right:0;z-index:1031;background:#ffffff!important;backdrop-filter:saturate(140%) blur(6px);box-shadow:0 2px 18px rgba(0,0,0,.08)!important;padding:.55rem 0;}
 .bnav .navbar-brand{display:flex;align-items:center;gap:.55rem;font-family:'Poppins','Segoe UI',sans-serif;font-weight:700;color:#023E8A;font-size:1.05rem;}
 .bnav .navbar-brand img{height:40px;border-radius:6px;}
 .bnav .nav-link{color:#333333;font-weight:600;font-size:.95rem;padding:.4rem .8rem;border-radius:8px;transition:.2s;}
@@ -105,7 +105,27 @@ a{color:var(--acc);}
 .bfoot li{margin-bottom:.5rem;font-size:.92rem;}
 .bfoot .fcontact i{color:var(--acc);width:18px;}
 .bfoot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:2rem;padding-top:1.2rem;text-align:center;font-size:.85rem;color:rgba(255,255,255,.6);}
-@media(max-width:600px){.article-hero{padding:2rem 1.3rem;}}
+.hero-credit{font-size:.74rem;color:var(--txm);margin:-1.2rem 0 1.4rem;text-align:right;}
+.hero-credit a{color:var(--txm);}
+.article-backtop{display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1rem;padding:.42rem .95rem;border:1px solid var(--bd);border-radius:50px;color:var(--acc);font-weight:600;font-size:.85rem;text-decoration:none;transition:.2s;}
+.article-backtop:hover{background:var(--acc);color:#fff;border-color:var(--acc);}
+.article-hero{min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;}
+.post-pager{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2.8rem 0 1rem;}
+.post-pager a{display:flex;flex-direction:column;gap:.3rem;border:1px solid var(--bd);border-radius:12px;padding:1rem 1.2rem;text-decoration:none;background:var(--card);transition:.2s;min-width:0;}
+.post-pager a:hover{border-color:var(--acc);transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.08);}
+.post-pager .lbl{font-size:.78rem;color:var(--acc);font-weight:700;}
+.post-pager .ttl{font-family:'Poppins','Segoe UI',sans-serif;color:var(--hd);font-weight:700;font-size:.98rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.post-pager .next{text-align:right;align-items:flex-end;}
+.related{margin:3rem 0 1rem;}
+.related h3{font-family:'Poppins','Segoe UI',sans-serif;font-weight:700;font-size:1.3rem;color:var(--hd);margin-bottom:1rem;}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;}
+.related-card{border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--card);text-decoration:none;display:flex;flex-direction:column;transition:.2s;}
+.related-card:hover{border-color:var(--acc);transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.08);}
+.related-card .rc-top{height:100px;background-size:cover;background-position:center;background-color:var(--card2);}
+.related-card .rc-body{padding:.8rem .9rem;}
+.related-card .rc-cat{font-size:.67rem;text-transform:uppercase;letter-spacing:.8px;color:var(--acc);font-weight:700;}
+.related-card .rc-ttl{font-family:'Poppins','Segoe UI',sans-serif;color:var(--hd);font-weight:600;font-size:.9rem;line-height:1.3;margin-top:.25rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+@media(max-width:600px){.article-hero{padding:2rem 1.3rem;min-height:230px;}.post-pager{grid-template-columns:1fr;}}
 </style>
   <script type="application/ld+json">
 {
@@ -214,7 +234,7 @@ a{color:var(--acc);}
   </header>
   <section class="blog-grid">
       <article class="blog-card">
-        <a href="/blog/altyapi-projeleri-icme-suyu-kanalizasyon-drenaj.html" class="blog-card-top"><span class="cat">Altyapı Projeleri</span></a>
+        <a href="/blog/altyapi-projeleri-icme-suyu-kanalizasyon-drenaj.html" class="blog-card-top" style="background-image:linear-gradient(160deg,rgba(0,0,0,.10),rgba(0,0,0,.55)),url('/blog/img/altyapi-projeleri-icme-suyu-kanalizasyon-drenaj.jpg');"><span class="cat">Altyapı Projeleri</span></a>
         <div class="blog-card-body">
           <h2><a href="/blog/altyapi-projeleri-icme-suyu-kanalizasyon-drenaj.html">Altyapı Projeleri: İçme Suyu, Kanalizasyon ve Drenaj Sistemleri</a></h2>
           <p>Altyapı inşaatı rehberi: içme suyu şebekesi, kanalizasyon, yağmur suyu ve drenaj hatları nasıl planlanır ve yapılır? Proje aşamaları ve mühendislik kriterleri.</p>
@@ -223,7 +243,7 @@ a{color:var(--acc);}
         </div>
       </article>
       <article class="blog-card">
-        <a href="/blog/asfalt-kaplama-turleri-uygulama-teknikleri.html" class="blog-card-top"><span class="cat">Asfalt ve Kaplama</span></a>
+        <a href="/blog/asfalt-kaplama-turleri-uygulama-teknikleri.html" class="blog-card-top" style="background-image:linear-gradient(160deg,rgba(0,0,0,.10),rgba(0,0,0,.55)),url('/blog/img/asfalt-kaplama-turleri-uygulama-teknikleri.jpg');"><span class="cat">Asfalt ve Kaplama</span></a>
         <div class="blog-card-body">
           <h2><a href="/blog/asfalt-kaplama-turleri-uygulama-teknikleri.html">Asfalt Kaplama Türleri ve Uygulama Teknikleri</a></h2>
           <p>Asfalt kaplama türleri: sıcak karışım (BSK), aşınma-binder tabakası, sathi kaplama. Asfalt serme, finişer ve silindir ile sıkıştırma teknikleri ve ömrü.</p>
@@ -232,7 +252,7 @@ a{color:var(--acc);}
         </div>
       </article>
       <article class="blog-card">
-        <a href="/blog/hastane-insaati-dikkat-edilmesi-gereken-noktalar.html" class="blog-card-top"><span class="cat">Hastane İnşaatı</span></a>
+        <a href="/blog/hastane-insaati-dikkat-edilmesi-gereken-noktalar.html" class="blog-card-top" style="background-image:linear-gradient(160deg,rgba(0,0,0,.10),rgba(0,0,0,.55)),url('/blog/img/hastane-insaati-dikkat-edilmesi-gereken-noktalar.jpg');"><span class="cat">Hastane İnşaatı</span></a>
         <div class="blog-card-body">
           <h2><a href="/blog/hastane-insaati-dikkat-edilmesi-gereken-noktalar.html">Hastane İnşaatında Dikkat Edilmesi Gereken 10 Kritik Nokta</a></h2>
           <p>Hastane ve şehir hastanesi inşaatında hijyen, enfeksiyon kontrolü, havalandırma, deprem dayanımı ve Sağlık Yapıları Asgari Tasarım Standartları rehberi.</p>
@@ -241,7 +261,7 @@ a{color:var(--acc);}
         </div>
       </article>
       <article class="blog-card">
-        <a href="/blog/havalimani-insaati-nasil-yapilir-pist-terminal.html" class="blog-card-top"><span class="cat">Havalimanı İnşaatı</span></a>
+        <a href="/blog/havalimani-insaati-nasil-yapilir-pist-terminal.html" class="blog-card-top" style="background-image:linear-gradient(160deg,rgba(0,0,0,.10),rgba(0,0,0,.55)),url('/blog/img/havalimani-insaati-nasil-yapilir-pist-terminal.jpg');"><span class="cat">Havalimanı İnşaatı</span></a>
         <div class="blog-card-body">
           <h2><a href="/blog/havalimani-insaati-nasil-yapilir-pist-terminal.html">Havalimanı İnşaatı Nasıl Yapılır? Pist ve Terminal Yapım Süreçleri</a></h2>
           <p>Havalimanı inşaatı aşamaları: zemin etüdü, pist (beton/asfalt) ve apron yapımı, terminal ve altyapı süreçleri. Pist ömrü, eğim ve rüzgar kriterleri rehberi.</p>
@@ -250,7 +270,7 @@ a{color:var(--acc);}
         </div>
       </article>
       <article class="blog-card">
-        <a href="/blog/insaatta-agir-is-makineleri-makine-parki-yonetimi.html" class="blog-card-top"><span class="cat">Makine ve Ekipman</span></a>
+        <a href="/blog/insaatta-agir-is-makineleri-makine-parki-yonetimi.html" class="blog-card-top" style="background-image:linear-gradient(160deg,rgba(0,0,0,.10),rgba(0,0,0,.55)),url('/blog/img/insaatta-agir-is-makineleri-makine-parki-yonetimi.jpg');"><span class="cat">Makine ve Ekipman</span></a>
         <div class="blog-card-body">
           <h2><a href="/blog/insaatta-agir-is-makineleri-makine-parki-yonetimi.html">İnşaatta Ağır İş Makineleri ve Makine Parkı Yönetimi</a></h2>
           <p>İnşaat ağır iş makineleri: ekskavatör, greyder, silindir, dozer, finişer ne işe yarar? Güçlü makine parkı yönetimi projeyi nasıl hızlandırır ve maliyeti düşürür?</p>
@@ -259,7 +279,7 @@ a{color:var(--acc);}
         </div>
       </article>
       <article class="blog-card">
-        <a href="/blog/insaatta-iso-kalite-is-sagligi-guvenligi-iso-45001.html" class="blog-card-top"><span class="cat">Kalite ve İSG</span></a>
+        <a href="/blog/insaatta-iso-kalite-is-sagligi-guvenligi-iso-45001.html" class="blog-card-top" style="background-image:linear-gradient(160deg,rgba(0,0,0,.10),rgba(0,0,0,.55)),url('/blog/img/insaatta-iso-kalite-is-sagligi-guvenligi-iso-45001.jpg');"><span class="cat">Kalite ve İSG</span></a>
         <div class="blog-card-body">
           <h2><a href="/blog/insaatta-iso-kalite-is-sagligi-guvenligi-iso-45001.html">İnşaatta ISO Kalite ve İş Sağlığı Güvenliği (ISO 9001 ve ISO 45001)</a></h2>
           <p>İnşaatta ISO 9001 kalite ve ISO 45001 iş sağlığı güvenliği yönetim sistemleri ne sağlar? Şantiyede İSG, risk yönetimi ve belgelendirmenin önemi.</p>
@@ -268,7 +288,7 @@ a{color:var(--acc);}
         </div>
       </article>
       <article class="blog-card">
-        <a href="/blog/kamu-altyapi-projelerinde-guvenilir-muteahhit-secimi.html" class="blog-card-top"><span class="cat">Müteahhitlik</span></a>
+        <a href="/blog/kamu-altyapi-projelerinde-guvenilir-muteahhit-secimi.html" class="blog-card-top" style="background-image:linear-gradient(160deg,rgba(0,0,0,.10),rgba(0,0,0,.55)),url('/blog/img/kamu-altyapi-projelerinde-guvenilir-muteahhit-secimi.jpg');"><span class="cat">Müteahhitlik</span></a>
         <div class="blog-card-body">
           <h2><a href="/blog/kamu-altyapi-projelerinde-guvenilir-muteahhit-secimi.html">Büyük Altyapı Projelerinde Güvenilir Müteahhit Nasıl Seçilir?</a></h2>
           <p>Havalimanı, hastane ve yol gibi büyük projelerde güvenilir müteahhit seçimi: yetki belgesi, referanslar, makine parkı, ISO belgeleri ve mali yeterlilik kriterleri.</p>
@@ -277,7 +297,7 @@ a{color:var(--acc);}
         </div>
       </article>
       <article class="blog-card">
-        <a href="/blog/karayolu-otoyol-yapimi-asamalari.html" class="blog-card-top"><span class="cat">Yol ve Altyapı</span></a>
+        <a href="/blog/karayolu-otoyol-yapimi-asamalari.html" class="blog-card-top" style="background-image:linear-gradient(160deg,rgba(0,0,0,.10),rgba(0,0,0,.55)),url('/blog/img/karayolu-otoyol-yapimi-asamalari.jpg');"><span class="cat">Yol ve Altyapı</span></a>
         <div class="blog-card-body">
           <h2><a href="/blog/karayolu-otoyol-yapimi-asamalari.html">Karayolu ve Otoyol Yapımının Aşamaları: Etütten Asfalta Tüm Süreç</a></h2>
           <p>Karayolu ve otoyol yapımı aşamaları: güzergah etüdü, kamulaştırma, hafriyat, dolgu, alttemel-temel, zemin stabilizasyonu ve asfalt kaplama adım adım.</p>
@@ -286,7 +306,7 @@ a{color:var(--acc);}
         </div>
       </article>
       <article class="blog-card">
-        <a href="/blog/kirec-stabilizasyonu-nedir-nasil-uygulanir.html" class="blog-card-top"><span class="cat">Zemin İyileştirme</span></a>
+        <a href="/blog/kirec-stabilizasyonu-nedir-nasil-uygulanir.html" class="blog-card-top" style="background-image:linear-gradient(160deg,rgba(0,0,0,.10),rgba(0,0,0,.55)),url('/blog/img/kirec-stabilizasyonu-nedir-nasil-uygulanir.jpg');"><span class="cat">Zemin İyileştirme</span></a>
         <div class="blog-card-body">
           <h2><a href="/blog/kirec-stabilizasyonu-nedir-nasil-uygulanir.html">Kireç Stabilizasyonu Nedir, Nasıl ve Neden Uygulanır?</a></h2>
           <p>Kireç stabilizasyonu nedir? Düşük CBR&#39;li, şişen killi zeminlerin sönmüş/sönmemiş kireçle iyileştirilmesi, uygulama adımları, taşıma gücü ve maliyet avantajı.</p>
@@ -295,7 +315,7 @@ a{color:var(--acc);}
         </div>
       </article>
       <article class="blog-card">
-        <a href="/blog/uluslararasi-insaat-projeleri-afrika-deneyimi.html" class="blog-card-top"><span class="cat">Uluslararası Projeler</span></a>
+        <a href="/blog/uluslararasi-insaat-projeleri-afrika-deneyimi.html" class="blog-card-top" style="background-image:linear-gradient(160deg,rgba(0,0,0,.10),rgba(0,0,0,.55)),url('/blog/img/uluslararasi-insaat-projeleri-afrika-deneyimi.jpg');"><span class="cat">Uluslararası Projeler</span></a>
         <div class="blog-card-body">
           <h2><a href="/blog/uluslararasi-insaat-projeleri-afrika-deneyimi.html">Uluslararası İnşaat Projeleri ve Afrika&#39;da Müteahhitlik Deneyimi</a></h2>
           <p>Afrika, Ortadoğu ve Avrupa&#39;da inşaat projeleri nasıl yürütülür? Lojistik, mevzuat, iklim ve makine parkı zorlukları ve 1994&#39;ten beri Nijerya deneyimi.</p>

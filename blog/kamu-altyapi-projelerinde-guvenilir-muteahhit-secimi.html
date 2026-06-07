@@ -39,7 +39,7 @@
 body{background:var(--pg);color:var(--tx);font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
 a{color:var(--acc);}
 /* ---- blog nav ---- */
-.bnav{background:#ffffff;backdrop-filter:saturate(140%) blur(6px);box-shadow:0 2px 18px rgba(0,0,0,.08);padding:.55rem 0;}
+.bnav{position:fixed!important;top:0;left:0;right:0;z-index:1031;background:#ffffff!important;backdrop-filter:saturate(140%) blur(6px);box-shadow:0 2px 18px rgba(0,0,0,.08)!important;padding:.55rem 0;}
 .bnav .navbar-brand{display:flex;align-items:center;gap:.55rem;font-family:'Poppins','Segoe UI',sans-serif;font-weight:700;color:#023E8A;font-size:1.05rem;}
 .bnav .navbar-brand img{height:40px;border-radius:6px;}
 .bnav .nav-link{color:#333333;font-weight:600;font-size:.95rem;padding:.4rem .8rem;border-radius:8px;transition:.2s;}
@@ -111,7 +111,27 @@ a{color:var(--acc);}
 .bfoot li{margin-bottom:.5rem;font-size:.92rem;}
 .bfoot .fcontact i{color:var(--acc);width:18px;}
 .bfoot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:2rem;padding-top:1.2rem;text-align:center;font-size:.85rem;color:rgba(255,255,255,.6);}
-@media(max-width:600px){.article-hero{padding:2rem 1.3rem;}}
+.hero-credit{font-size:.74rem;color:var(--txm);margin:-1.2rem 0 1.4rem;text-align:right;}
+.hero-credit a{color:var(--txm);}
+.article-backtop{display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1rem;padding:.42rem .95rem;border:1px solid var(--bd);border-radius:50px;color:var(--acc);font-weight:600;font-size:.85rem;text-decoration:none;transition:.2s;}
+.article-backtop:hover{background:var(--acc);color:#fff;border-color:var(--acc);}
+.article-hero{min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;}
+.post-pager{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2.8rem 0 1rem;}
+.post-pager a{display:flex;flex-direction:column;gap:.3rem;border:1px solid var(--bd);border-radius:12px;padding:1rem 1.2rem;text-decoration:none;background:var(--card);transition:.2s;min-width:0;}
+.post-pager a:hover{border-color:var(--acc);transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.08);}
+.post-pager .lbl{font-size:.78rem;color:var(--acc);font-weight:700;}
+.post-pager .ttl{font-family:'Poppins','Segoe UI',sans-serif;color:var(--hd);font-weight:700;font-size:.98rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.post-pager .next{text-align:right;align-items:flex-end;}
+.related{margin:3rem 0 1rem;}
+.related h3{font-family:'Poppins','Segoe UI',sans-serif;font-weight:700;font-size:1.3rem;color:var(--hd);margin-bottom:1rem;}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;}
+.related-card{border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--card);text-decoration:none;display:flex;flex-direction:column;transition:.2s;}
+.related-card:hover{border-color:var(--acc);transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.08);}
+.related-card .rc-top{height:100px;background-size:cover;background-position:center;background-color:var(--card2);}
+.related-card .rc-body{padding:.8rem .9rem;}
+.related-card .rc-cat{font-size:.67rem;text-transform:uppercase;letter-spacing:.8px;color:var(--acc);font-weight:700;}
+.related-card .rc-ttl{font-family:'Poppins','Segoe UI',sans-serif;color:var(--hd);font-weight:600;font-size:.9rem;line-height:1.3;margin-top:.25rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+@media(max-width:600px){.article-hero{padding:2rem 1.3rem;min-height:230px;}.post-pager{grid-template-columns:1fr;}}
 </style>
   <script type="application/ld+json">
 {
@@ -235,11 +255,13 @@ a{color:var(--acc);}
     </div>
   </nav>
   <main class="article-wrap">
+    <a href="/blog/" class="article-backtop"><i class="bi bi-arrow-left"></i> Tüm Yazılar</a>
     <nav class="breadcrumb-nav"><a href="/">BOSS Müteahhitlik</a> / <a href="/blog/">Blog</a> / Büyük Altyapı Projelerinde Güvenilir Müteahhit Nasıl Seçilir?</nav>
-    <div class="article-hero">
+    <div class="article-hero" style="background:linear-gradient(165deg,rgba(0,0,0,.20),rgba(0,0,0,.66)),url('/blog/img/kamu-altyapi-projelerinde-guvenilir-muteahhit-secimi.jpg') center/cover;">
       <div class="cat">Müteahhitlik</div>
       <h1>Büyük Altyapı Projelerinde Güvenilir Müteahhit Nasıl Seçilir?</h1>
     </div>
+    <p class="hero-credit">Görsel: Fumikas Sagisavas · CC0 · <a href="https://commons.wikimedia.org/wiki/File:Project_Management_Department_of_LMS2_Section_of_312_National_Highway_Changzhou_Henglin_to_Hutang_East_Section.jpg" target="_blank" rel="noopener nofollow">Wikimedia Commons</a></p>
     <p class="article-sub">Havalimanı, hastane ve karayolu gibi büyük ölçekli altyapı projelerinde doğru müteahhidi seçmenin teknik, mali ve hukuki kriterlerini; sık yapılan hataları ve sorulması gereken soruları adım adım açıklıyoruz.</p>
     <div class="article-meta">
       <span><i class="bi bi-clock"></i> 12 dk okuma</span>
@@ -268,6 +290,8 @@ a{color:var(--acc);}
     </article>
     <div class="takeaways"><h3>Öne çıkanlar</h3><ul><li>Büyük altyapı projelerinde seçim, fiyat karşılaştırması değil; teknik, mali ve hukuki kapasite değerlendirmesidir.</li><li>İlk eleme yetki belgeleri ve yasal yeterlilikle başlar; belgeler güncel ve ilgili iş kalemini kapsamalıdır.</li><li>Referanslar tip, ölçek ve güncellik bakımından benzer olmalı ve mümkünse yerinde doğrulanmalıdır.</li><li>Güçlü bir öz makine parkı, mobilizasyon hızı ve maliyet istikrarı sağlar; kiralama bağımlılığı risk yaratır.</li><li>ISO 9001/14001/45001 belgeleri ile mali yeterlilik ve nakit akışı dayanıklılığı vazgeçilmez kriterlerdir.</li><li>En düşük fiyata göre karar vermek, referansları doğrulamamak ve garantiyi belirsiz bırakmak en pahalı hatalardır.</li></ul></div>
     <div class="faq-wrap"><h3>Sıkça Sorulan Sorular</h3><details class="faq-item"><summary>Büyük bir altyapı projesinde müteahhit seçerken bakılması gereken ilk kriter nedir?</summary><div class="faq-a">İlk adım yasal yeterliliği doğrulamaktır: müteahhit yetki belgesi, iş deneyim belgeleri, vergi ve SGK borcu bulunmadığına dair kayıtlar ve uluslararası işlerde yerel ruhsat ve izinler. Bu belgeler güncel olmalı ve yapılacak işin kalemini kapsamalıdır. Yasal eleme geçilmeden teknik ve mali değerlendirmeye geçmek hatalıdır; çünkü belgesi eksik bir firma, ne kadar yetenekli görünürse görünsün ileride ciddi idari ve hukuki riskler doğurur.</div></details><details class="faq-item"><summary>Bir inşaat firmasının referanslarını nasıl doğru değerlendiririm?</summary><div class="faq-a">Referansları sayıya değil, üç boyuttaki benzerliğe bakarak değerlendirin: tip (hastane, havalimanı, yol gibi), ölçek (sözleşme bedeli ve büyüklük) ve güncellik. Projenin ana yüklenici olarak mı yapıldığını, planlanan ve gerçekleşen süre farkını, işveren memnuniyetini ve sonradan ortaya çıkan kusurları sorun. Mümkünse eski işverenlerle görüşün ve tamamlanmış yapıyı yerinde inceleyin; broşür fotoğrafları tek başına yeterli kanıt değildir.</div></details><details class="faq-item"><summary>Müteahhidin makine parkı neden bu kadar önemli?</summary><div class="faq-a">Büyük altyapı işlerinde projenin hızı ve maliyeti büyük ölçüde makine parkına bağlıdır. Güçlü bir öz makine parkı; daha hızlı mobilizasyon, planlamada esneklik ve kiralama piyasasındaki dalgalanmalara karşı maliyet istikrarı sağlar. Kritik bir makine arızalandığında yedeğinin sahada olması, geniş parka sahip firmalar için sıradan bir durumdur. Her şeyi dışarıdan kiralayan firmalarda ise tek bir arıza günler süren gecikmelere yol açabilir.</div></details><details class="faq-item"><summary>En düşük teklifi veren müteahhidi seçmek doğru mu?</summary><div class="faq-a">Çoğu zaman hayır. Büyük altyapı projelerinde gerçekçi olmayan derecede düşük teklifler, ileride ek talepler, gecikmeler ya da kalite düşüklüğü olarak geri döner. Doğru yaklaşım, fiyatı teknik kapasite, mali yeterlilik, referanslar ve makine parkı gibi kriterlerle birlikte değerlendirmektir. En pahalı seçenek genellikle en ucuz teklifi veren ama bu kriterleri karşılamayan firmadır; çünkü yarıda kalan ya da kusurlu bir işin onarımı, başlangıçtaki tasarruftan çok daha pahalıya mal olur.</div></details></div>
+    <section class="related"><h3>İlgili Yazılar</h3><div class="related-grid"><a class="related-card" href="/blog/altyapi-projeleri-icme-suyu-kanalizasyon-drenaj.html"><div class="rc-top" style="background-image:linear-gradient(165deg,rgba(0,0,0,.12),rgba(0,0,0,.5)),url('/blog/img/altyapi-projeleri-icme-suyu-kanalizasyon-drenaj.jpg');"></div><div class="rc-body"><div class="rc-cat">Altyapı Projeleri</div><div class="rc-ttl">Altyapı Projeleri: İçme Suyu, Kanalizasyon ve Drenaj Sistemleri</div></div></a><a class="related-card" href="/blog/asfalt-kaplama-turleri-uygulama-teknikleri.html"><div class="rc-top" style="background-image:linear-gradient(165deg,rgba(0,0,0,.12),rgba(0,0,0,.5)),url('/blog/img/asfalt-kaplama-turleri-uygulama-teknikleri.jpg');"></div><div class="rc-body"><div class="rc-cat">Asfalt ve Kaplama</div><div class="rc-ttl">Asfalt Kaplama Türleri ve Uygulama Teknikleri</div></div></a><a class="related-card" href="/blog/hastane-insaati-dikkat-edilmesi-gereken-noktalar.html"><div class="rc-top" style="background-image:linear-gradient(165deg,rgba(0,0,0,.12),rgba(0,0,0,.5)),url('/blog/img/hastane-insaati-dikkat-edilmesi-gereken-noktalar.jpg');"></div><div class="rc-body"><div class="rc-cat">Hastane İnşaatı</div><div class="rc-ttl">Hastane İnşaatında Dikkat Edilmesi Gereken 10 Kritik Nokta</div></div></a></div></section>
+    <nav class="post-pager" aria-label="Yazı gezinmesi"><a class="prev" href="/blog/insaatta-iso-kalite-is-sagligi-guvenligi-iso-45001.html"><span class="lbl">← Önceki Yazı</span><span class="ttl">İnşaatta ISO Kalite ve İş Sağlığı Güvenliği (ISO 9001 ve ISO 45001)</span></a><a class="next" href="/blog/karayolu-otoyol-yapimi-asamalari.html"><span class="lbl">Sonraki Yazı →</span><span class="ttl">Karayolu ve Otoyol Yapımının Aşamaları: Etütten Asfalta Tüm Süreç</span></a></nav>
     <div class="cta-box"><h3>BOSS Müteahhitlik</h3><p>Havalimanı, hastane, yol ve altyapı inşaatı üzerine uzman müteahhitlik rehberleri ve sektörel bilgiler.</p><a class="btn" href="/#contact">İletişime Geçin</a></div>
     <a href="/blog/" class="article-back"><i class="bi bi-arrow-left"></i> Tüm yazılar</a>
   </main>

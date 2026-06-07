@@ -39,7 +39,7 @@
 body{background:var(--pg);color:var(--tx);font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
 a{color:var(--acc);}
 /* ---- blog nav ---- */
-.bnav{background:#ffffff;backdrop-filter:saturate(140%) blur(6px);box-shadow:0 2px 18px rgba(0,0,0,.08);padding:.55rem 0;}
+.bnav{position:fixed!important;top:0;left:0;right:0;z-index:1031;background:#ffffff!important;backdrop-filter:saturate(140%) blur(6px);box-shadow:0 2px 18px rgba(0,0,0,.08)!important;padding:.55rem 0;}
 .bnav .navbar-brand{display:flex;align-items:center;gap:.55rem;font-family:'Poppins','Segoe UI',sans-serif;font-weight:700;color:#023E8A;font-size:1.05rem;}
 .bnav .navbar-brand img{height:40px;border-radius:6px;}
 .bnav .nav-link{color:#333333;font-weight:600;font-size:.95rem;padding:.4rem .8rem;border-radius:8px;transition:.2s;}
@@ -111,7 +111,27 @@ a{color:var(--acc);}
 .bfoot li{margin-bottom:.5rem;font-size:.92rem;}
 .bfoot .fcontact i{color:var(--acc);width:18px;}
 .bfoot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:2rem;padding-top:1.2rem;text-align:center;font-size:.85rem;color:rgba(255,255,255,.6);}
-@media(max-width:600px){.article-hero{padding:2rem 1.3rem;}}
+.hero-credit{font-size:.74rem;color:var(--txm);margin:-1.2rem 0 1.4rem;text-align:right;}
+.hero-credit a{color:var(--txm);}
+.article-backtop{display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1rem;padding:.42rem .95rem;border:1px solid var(--bd);border-radius:50px;color:var(--acc);font-weight:600;font-size:.85rem;text-decoration:none;transition:.2s;}
+.article-backtop:hover{background:var(--acc);color:#fff;border-color:var(--acc);}
+.article-hero{min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;}
+.post-pager{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2.8rem 0 1rem;}
+.post-pager a{display:flex;flex-direction:column;gap:.3rem;border:1px solid var(--bd);border-radius:12px;padding:1rem 1.2rem;text-decoration:none;background:var(--card);transition:.2s;min-width:0;}
+.post-pager a:hover{border-color:var(--acc);transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.08);}
+.post-pager .lbl{font-size:.78rem;color:var(--acc);font-weight:700;}
+.post-pager .ttl{font-family:'Poppins','Segoe UI',sans-serif;color:var(--hd);font-weight:700;font-size:.98rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.post-pager .next{text-align:right;align-items:flex-end;}
+.related{margin:3rem 0 1rem;}
+.related h3{font-family:'Poppins','Segoe UI',sans-serif;font-weight:700;font-size:1.3rem;color:var(--hd);margin-bottom:1rem;}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;}
+.related-card{border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--card);text-decoration:none;display:flex;flex-direction:column;transition:.2s;}
+.related-card:hover{border-color:var(--acc);transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.08);}
+.related-card .rc-top{height:100px;background-size:cover;background-position:center;background-color:var(--card2);}
+.related-card .rc-body{padding:.8rem .9rem;}
+.related-card .rc-cat{font-size:.67rem;text-transform:uppercase;letter-spacing:.8px;color:var(--acc);font-weight:700;}
+.related-card .rc-ttl{font-family:'Poppins','Segoe UI',sans-serif;color:var(--hd);font-weight:600;font-size:.9rem;line-height:1.3;margin-top:.25rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+@media(max-width:600px){.article-hero{padding:2rem 1.3rem;min-height:230px;}.post-pager{grid-template-columns:1fr;}}
 </style>
   <script type="application/ld+json">
 {
@@ -235,11 +255,13 @@ a{color:var(--acc);}
     </div>
   </nav>
   <main class="article-wrap">
+    <a href="/blog/en/" class="article-backtop"><i class="bi bi-arrow-left"></i> All Articles</a>
     <nav class="breadcrumb-nav"><a href="/">BOSS Müteahhitlik</a> / <a href="/blog/en/">Blog</a> / Heavy Construction Equipment and Machinery Fleet Management</nav>
-    <div class="article-hero">
+    <div class="article-hero" style="background:linear-gradient(165deg,rgba(0,0,0,.20),rgba(0,0,0,.66)),url('/blog/img/insaatta-agir-is-makineleri-makine-parki-yonetimi.jpg') center/cover;">
       <div class="cat">Machinery &amp; Equipment</div>
       <h1>Heavy Construction Equipment and Machinery Fleet Management</h1>
     </div>
+    <p class="hero-credit">Image: W.carter · CC BY 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Drilling_rig_and_a_digger_at_a_construction_site_in_Tuntorp.jpg" target="_blank" rel="noopener nofollow">Wikimedia Commons</a></p>
     <p class="article-sub">A practical guide explaining what each machine class does, from excavators and dozers to pavers and rollers, and how a strong in-house fleet speeds projects and lowers cost.</p>
     <div class="article-meta">
       <span><i class="bi bi-clock"></i> 11 min read</span>
@@ -266,6 +288,8 @@ a{color:var(--acc);}
     </article>
     <div class="takeaways"><h3>Key takeaways</h3><ul><li>Each activity has an optimised machine class: excavator for digging, dozer for pushing, grader for fine grading, paver for asphalt, roller for compaction.</li><li>Thanks to its attachments, the excavator is the most versatile and critical machine on site, and correct sizing directly affects unit cost.</li><li>Road superstructure quality depends on the grader-paver-roller trio working in harmony with the right temperature and density recipe.</li><li>Lime stabilisation is an economical method that improves weak soils in place, cutting the need for expensive imported fill and transport.</li><li>Fleet management rests on three pillars: preventive maintenance, telematics-based utilisation tracking and unit-cost-driven decisions.</li><li>Ownership suits core machines used intensively while rental suits short or specialised work; an owned fleet provides operational independence and schedule security.</li></ul></div>
     <div class="faq-wrap"><h3>Frequently Asked Questions</h3><details class="faq-item"><summary>What is the difference between a grader and a dozer?</summary><div class="faq-a">A dozer is a high-traction tracked machine that pushes, stockpiles and roughly grades soil with its wide front blade, used for land clearing and high-volume fill. A grader, with its long angled blade between two axles, performs fine grading, slope and smoothness to millimetric precision. In short, the dozer prepares the rough surface and the grader finishes it; the two are designed for different activities.</div></details><details class="faq-item"><summary>Is owning a fleet or renting more economical?</summary><div class="faq-a">The decision depends on machine utilisation and project duration. For core machines that run long at high utilisation (excavator, dozer, grader, roller, paver), ownership usually delivers lower unit cost and operational independence. For short-term, seasonal or highly specialised equipment, rental makes more sense. Most large contractors apply a mixed model: ownership for core machines and rental for temporary needs.</div></details><details class="faq-item"><summary>When is lime stabilisation used?</summary><div class="faq-a">Lime stabilisation is used to raise the bearing capacity of weak clayey, plastic, high-moisture soils. Hydrated lime or a lime-cement blend is spread on the soil, mixed with a stabiliser and compacted with a roller. The method lowers soil moisture, improves workability and makes in-situ material usable, reducing expensive imported fill and transport. Applied with the right dosage and equipment, it offers both cost and schedule advantages.</div></details><details class="faq-item"><summary>Why is the roller&#39;s role on an asphalt road so important?</summary><div class="faq-a">The roller compacts the laid asphalt, reducing its air voids, which raises density, strength and water resistance. If asphalt is not compacted within a specific temperature window with the correct roller type and number of passes, target density is never reached and the road deteriorates early. For this reason compaction is planned in sync with the paver and verified on site with density gauges rather than left to assumption.</div></details></div>
+    <section class="related"><h3>Related Articles</h3><div class="related-grid"><a class="related-card" href="/blog/en/altyapi-projeleri-icme-suyu-kanalizasyon-drenaj.html"><div class="rc-top" style="background-image:linear-gradient(165deg,rgba(0,0,0,.12),rgba(0,0,0,.5)),url('/blog/img/altyapi-projeleri-icme-suyu-kanalizasyon-drenaj.jpg');"></div><div class="rc-body"><div class="rc-cat">Infrastructure Projects</div><div class="rc-ttl">Infrastructure Projects: Water Supply, Sewerage and Drainage Systems</div></div></a><a class="related-card" href="/blog/en/asfalt-kaplama-turleri-uygulama-teknikleri.html"><div class="rc-top" style="background-image:linear-gradient(165deg,rgba(0,0,0,.12),rgba(0,0,0,.5)),url('/blog/img/asfalt-kaplama-turleri-uygulama-teknikleri.jpg');"></div><div class="rc-body"><div class="rc-cat">Asphalt &amp; Paving</div><div class="rc-ttl">Types of Asphalt Pavement and Application Techniques</div></div></a><a class="related-card" href="/blog/en/hastane-insaati-dikkat-edilmesi-gereken-noktalar.html"><div class="rc-top" style="background-image:linear-gradient(165deg,rgba(0,0,0,.12),rgba(0,0,0,.5)),url('/blog/img/hastane-insaati-dikkat-edilmesi-gereken-noktalar.jpg');"></div><div class="rc-body"><div class="rc-cat">Hospital Construction</div><div class="rc-ttl">Hospital Construction: 10 Critical Factors and Design Standards</div></div></a></div></section>
+    <nav class="post-pager" aria-label="Post navigation"><a class="prev" href="/blog/en/havalimani-insaati-nasil-yapilir-pist-terminal.html"><span class="lbl">← Previous</span><span class="ttl">How Is an Airport Built? Runway and Terminal Construction Process Explained</span></a><a class="next" href="/blog/en/insaatta-iso-kalite-is-sagligi-guvenligi-iso-45001.html"><span class="lbl">Next →</span><span class="ttl">ISO Quality and Occupational Health &amp; Safety in Construction (ISO 9001 &amp; 45001)</span></a></nav>
     <div class="cta-box"><h3>BOSS Müteahhitlik</h3><p>Expert contracting guides and industry know-how on airport, hospital, road and infrastructure construction.</p><a class="btn" href="/#contact">Get in Touch</a></div>
     <a href="/blog/en/" class="article-back"><i class="bi bi-arrow-left"></i> All articles</a>
   </main>

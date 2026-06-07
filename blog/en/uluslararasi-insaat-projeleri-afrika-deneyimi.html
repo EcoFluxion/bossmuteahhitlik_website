@@ -39,7 +39,7 @@
 body{background:var(--pg);color:var(--tx);font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
 a{color:var(--acc);}
 /* ---- blog nav ---- */
-.bnav{background:#ffffff;backdrop-filter:saturate(140%) blur(6px);box-shadow:0 2px 18px rgba(0,0,0,.08);padding:.55rem 0;}
+.bnav{position:fixed!important;top:0;left:0;right:0;z-index:1031;background:#ffffff!important;backdrop-filter:saturate(140%) blur(6px);box-shadow:0 2px 18px rgba(0,0,0,.08)!important;padding:.55rem 0;}
 .bnav .navbar-brand{display:flex;align-items:center;gap:.55rem;font-family:'Poppins','Segoe UI',sans-serif;font-weight:700;color:#023E8A;font-size:1.05rem;}
 .bnav .navbar-brand img{height:40px;border-radius:6px;}
 .bnav .nav-link{color:#333333;font-weight:600;font-size:.95rem;padding:.4rem .8rem;border-radius:8px;transition:.2s;}
@@ -111,7 +111,27 @@ a{color:var(--acc);}
 .bfoot li{margin-bottom:.5rem;font-size:.92rem;}
 .bfoot .fcontact i{color:var(--acc);width:18px;}
 .bfoot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:2rem;padding-top:1.2rem;text-align:center;font-size:.85rem;color:rgba(255,255,255,.6);}
-@media(max-width:600px){.article-hero{padding:2rem 1.3rem;}}
+.hero-credit{font-size:.74rem;color:var(--txm);margin:-1.2rem 0 1.4rem;text-align:right;}
+.hero-credit a{color:var(--txm);}
+.article-backtop{display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1rem;padding:.42rem .95rem;border:1px solid var(--bd);border-radius:50px;color:var(--acc);font-weight:600;font-size:.85rem;text-decoration:none;transition:.2s;}
+.article-backtop:hover{background:var(--acc);color:#fff;border-color:var(--acc);}
+.article-hero{min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;}
+.post-pager{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2.8rem 0 1rem;}
+.post-pager a{display:flex;flex-direction:column;gap:.3rem;border:1px solid var(--bd);border-radius:12px;padding:1rem 1.2rem;text-decoration:none;background:var(--card);transition:.2s;min-width:0;}
+.post-pager a:hover{border-color:var(--acc);transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.08);}
+.post-pager .lbl{font-size:.78rem;color:var(--acc);font-weight:700;}
+.post-pager .ttl{font-family:'Poppins','Segoe UI',sans-serif;color:var(--hd);font-weight:700;font-size:.98rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.post-pager .next{text-align:right;align-items:flex-end;}
+.related{margin:3rem 0 1rem;}
+.related h3{font-family:'Poppins','Segoe UI',sans-serif;font-weight:700;font-size:1.3rem;color:var(--hd);margin-bottom:1rem;}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;}
+.related-card{border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--card);text-decoration:none;display:flex;flex-direction:column;transition:.2s;}
+.related-card:hover{border-color:var(--acc);transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.08);}
+.related-card .rc-top{height:100px;background-size:cover;background-position:center;background-color:var(--card2);}
+.related-card .rc-body{padding:.8rem .9rem;}
+.related-card .rc-cat{font-size:.67rem;text-transform:uppercase;letter-spacing:.8px;color:var(--acc);font-weight:700;}
+.related-card .rc-ttl{font-family:'Poppins','Segoe UI',sans-serif;color:var(--hd);font-weight:600;font-size:.9rem;line-height:1.3;margin-top:.25rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+@media(max-width:600px){.article-hero{padding:2rem 1.3rem;min-height:230px;}.post-pager{grid-template-columns:1fr;}}
 </style>
   <script type="application/ld+json">
 {
@@ -235,11 +255,13 @@ a{color:var(--acc);}
     </div>
   </nav>
   <main class="article-wrap">
+    <a href="/blog/en/" class="article-backtop"><i class="bi bi-arrow-left"></i> All Articles</a>
     <nav class="breadcrumb-nav"><a href="/">BOSS Müteahhitlik</a> / <a href="/blog/en/">Blog</a> / International Construction Projects and Contracting Experience in Africa</nav>
-    <div class="article-hero">
+    <div class="article-hero" style="background:linear-gradient(165deg,rgba(0,0,0,.20),rgba(0,0,0,.66)),url('/blog/img/uluslararasi-insaat-projeleri-afrika-deneyimi.jpg') center/cover;">
       <div class="cat">International Projects</div>
       <h1>International Construction Projects and Contracting Experience in Africa</h1>
     </div>
+    <p class="hero-credit">Image: Tunesh247 · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:The_engineers_working_at_the_road_construction_site.jpg" target="_blank" rel="noopener nofollow">Wikimedia Commons</a></p>
     <p class="article-sub">Building an airport runway, a hospital or a highway in your home country is one thing; delivering it on another continent is something else entirely. This guide walks through the real challenges of international construction projects and the field-tested solutions that work.</p>
     <div class="article-meta">
       <span><i class="bi bi-clock"></i> 11 min read</span>
@@ -266,6 +288,8 @@ a{color:var(--acc);}
     </article>
     <div class="takeaways"><h3>Key takeaways</h3><ul><li>International construction is a discipline of logistics, regulation and risk management more than engineering; the project should be read as a risk map, not a schedule.</li><li>Buffer stocks, dual sourcing and localisation for critical materials, combined with a strong owned equipment fleet, minimise delays.</li><li>The target country&#39;s standards (BS, AASHTO, Eurocode), FIDIC contract rules and timely notices prevent loss of entitlement and costly redesign.</li><li>Climate and ground (rainy season, desert heat, lateritic soils) drive the schedule; lime stabilisation improves time and budget for road and runway subgrades.</li><li>Training the local workforce, a strong safety culture and transparent community relations secure the sustainability and acceptance of the project.</li><li>Decades of Nigeria and Africa experience cannot be copied; for the project owner it concretely reduces the risk of budget overruns and delays.</li></ul></div>
     <div class="faq-wrap"><h3>Frequently Asked Questions</h3><details class="faq-item"><summary>What is the biggest challenge of running construction projects in Africa?</summary><div class="faq-a">The biggest challenge is usually logistics rather than engineering: long lead times for critical materials and spare parts, customs delays and poor transport infrastructure. Climate constraints such as the rainy season and local permitting processes add to this. The solution is strong buffer stocks, a dual-sourcing strategy, a self-sufficient owned equipment fleet and a schedule built around the dry season.</div></details><details class="faq-item"><summary>Which standards and contracts apply on international construction projects?</summary><div class="faq-a">On the contractual side, most international projects use the FIDIC family (Red Book, Yellow Book and so on), which sets clear rules for variations, claims and dispute resolution. Technical standards vary by country: many African countries rely on British (BS) and American (AASHTO/ACI) norms, while Europe and some projects use Eurocode. Which norm applies should be clarified at the start of the project.</div></details><details class="faq-item"><summary>Why is lime and soil stabilisation important on international road and runway projects?</summary><div class="faq-a">Tropical lateritic soils or the highly plastic clays of arid regions are often inadequate to build a road or runway on. In-situ stabilisation with lime or cement makes this weak soil workable and load-bearing, greatly reducing the cost and time of hauling quality fill from far away. Properly executed stabilisation concretely improves both budget and programme.</div></details><details class="faq-item"><summary>Why does choosing a contractor with Africa and Middle East experience reduce risk?</summary><div class="faq-a">Because experience cannot be copied. Customs relationships, reliable quarries, a local subcontractor network and the real climate calendar — all learned over years on site — make a project predictable. BOSS Genel Müteahhitlik is a good example: its majority partner GITTO has operated internationally since 1954 and in Nigeria since 1994. Such a track record concretely lowers the likelihood of budget overruns and delays for the project owner.</div></details></div>
+    <section class="related"><h3>Related Articles</h3><div class="related-grid"><a class="related-card" href="/blog/en/altyapi-projeleri-icme-suyu-kanalizasyon-drenaj.html"><div class="rc-top" style="background-image:linear-gradient(165deg,rgba(0,0,0,.12),rgba(0,0,0,.5)),url('/blog/img/altyapi-projeleri-icme-suyu-kanalizasyon-drenaj.jpg');"></div><div class="rc-body"><div class="rc-cat">Infrastructure Projects</div><div class="rc-ttl">Infrastructure Projects: Water Supply, Sewerage and Drainage Systems</div></div></a><a class="related-card" href="/blog/en/asfalt-kaplama-turleri-uygulama-teknikleri.html"><div class="rc-top" style="background-image:linear-gradient(165deg,rgba(0,0,0,.12),rgba(0,0,0,.5)),url('/blog/img/asfalt-kaplama-turleri-uygulama-teknikleri.jpg');"></div><div class="rc-body"><div class="rc-cat">Asphalt &amp; Paving</div><div class="rc-ttl">Types of Asphalt Pavement and Application Techniques</div></div></a><a class="related-card" href="/blog/en/hastane-insaati-dikkat-edilmesi-gereken-noktalar.html"><div class="rc-top" style="background-image:linear-gradient(165deg,rgba(0,0,0,.12),rgba(0,0,0,.5)),url('/blog/img/hastane-insaati-dikkat-edilmesi-gereken-noktalar.jpg');"></div><div class="rc-body"><div class="rc-cat">Hospital Construction</div><div class="rc-ttl">Hospital Construction: 10 Critical Factors and Design Standards</div></div></a></div></section>
+    <nav class="post-pager" aria-label="Post navigation"><a class="prev" href="/blog/en/kirec-stabilizasyonu-nedir-nasil-uygulanir.html"><span class="lbl">← Previous</span><span class="ttl">What Is Lime Stabilization and How Is It Applied in Road Construction?</span></a><a class="next" href="/blog/en/"><span class="lbl">Blog →</span><span class="ttl">All Articles</span></a></nav>
     <div class="cta-box"><h3>BOSS Müteahhitlik</h3><p>Expert contracting guides and industry know-how on airport, hospital, road and infrastructure construction.</p><a class="btn" href="/#contact">Get in Touch</a></div>
     <a href="/blog/en/" class="article-back"><i class="bi bi-arrow-left"></i> All articles</a>
   </main>
